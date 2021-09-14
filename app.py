@@ -21,11 +21,6 @@ def index():
     
     return "นายอาคม สุวรรณประเสริฐ เลขที่ 0 ชั้น ม.4/"
 
-@app.route("/webhook", methods=['POST'])
-def webhook():
-    if request.method == 'POST':
-        return "OK"
-
 @app.route('/callb', methods=['POST'])
 def callb():
     json_line = request.get_json()
@@ -52,6 +47,11 @@ def callb():
         sendText(user,"ไม่บ้านะ")
 
     return '',200
+
+@app.route("/webhook", methods=['POST'])
+def webhook():
+    if request.method == 'POST':
+        return "OK"
 
 @app.route('/callback', methods=['POST'])
 def callback():
